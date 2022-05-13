@@ -2,11 +2,11 @@ using Microsoft.EntityFrameworkCore;
 using Quiz.Api.Data;
 
 var builder = WebApplication.CreateBuilder(args);
+var origins = builder.Configuration["AllowedOrigins"].Split(';');
 
 //Add CORS
 builder.Services.AddCors(options =>
 {
-    var origins = builder.Configuration["AllowedOrigins"].Split(';');
 
     options.AddPolicy("AllowSpecificOrigins",
     //allow specific origins
@@ -38,6 +38,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors("AllowSpecificOrigins");
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();

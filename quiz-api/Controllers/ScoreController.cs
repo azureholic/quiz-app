@@ -25,7 +25,6 @@ namespace Quiz.Api.Controllers
 
             try
             {
-                
                 var message = new ServiceBusMessage(JsonConvert.SerializeObject(score));
                 message.ContentType = "application/json";
                 await sender.SendMessageAsync(message);
