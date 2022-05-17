@@ -27,6 +27,7 @@ function loadQuestions() {
 
     document.getElementById("questions").style.display = "none";
     document.getElementById("score").style.display = "none";
+    document.getElementById("progress").style.width = "0%"
 
     var url = apiBaseUrl + "/question";
     var xhr = new XMLHttpRequest();
