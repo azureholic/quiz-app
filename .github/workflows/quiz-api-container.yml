@@ -1,0 +1,25 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Quiz API - Container Build
+
+on:
+#  push:
+#    branches: [ main ]
+#    paths: "quiz-api/**"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: azure/docker-login@v1 
+        with: 
+          login-server: openhackiaw3kcz1acr.azurecr.io
+          username: ${{ secrets.ACR_USERNAME }} 
+          password: ${{ secrets.ACR_PASSWORD }} 
+
+      - run: | 
+          docker build ./quiz-api -t rbrquiz.azurecr.io/quiz/quiz-api:${{ github.run_number }} 
+          docker push rbrquiz.azurecr.io/quiz/quiz-api:${{ github.run_number }} 
