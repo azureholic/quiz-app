@@ -25,7 +25,7 @@ function getConfig() {
 }
 
 function loadQuestions() {
-    var url = apibaseUrl + "/question";
+    var url = apiBaseUrl + "/question";
     var xhr = new XMLHttpRequest();
     xhr.open("GET", url, true);
     xhr.setRequestHeader("Content-Type", "application/json");
@@ -126,7 +126,7 @@ function requestCert() {
     certInfo.totalScore = score * 20;
     var data = JSON.stringify(certInfo);
 
-    var url = apibaseUrl + "/score";
+    var url = apiBaseUrl + "/score";
     var xhr = new XMLHttpRequest();
     xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
