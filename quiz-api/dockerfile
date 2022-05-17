@@ -1,0 +1,14 @@
+﻿FROM mcr.microsoft.com/dotnet/sdk:6.0
+
+# Set ASPNETCORE_URLS
+ENV ASPNETCORE_URLS=http://*:8080
+
+# Copy the binaries
+COPY ./publish app
+# Change to app directory
+WORKDIR app
+
+# Expose port 8080 for the application.
+EXPOSE 8080
+
+ENTRYPOINT ["dotnet", "quiz-api.dll"]
