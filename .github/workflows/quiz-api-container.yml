@@ -14,8 +14,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: actions/checkout@v3
-
       - name: Setup .NET
         uses: actions/setup-dotnet@v2
         with:
@@ -32,7 +30,7 @@ jobs:
 
       - uses: azure/docker-login@v1 
         with: 
-          login-server: openhackiaw3kcz1acr.azurecr.io
+          login-server: rbrquiz.azurecr.io
           username: ${{ secrets.ACR_USERNAME }} 
           password: ${{ secrets.ACR_PASSWORD }} 
 
