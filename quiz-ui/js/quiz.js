@@ -13,7 +13,6 @@ function getConfig() {
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
             var configdata = JSON.parse(xhr.responseText);
-            console.log(configdata.apiuri);
             apiBaseUrl = configdata.apiuri;
             loadQuestions();
         }
@@ -31,24 +30,15 @@ function loadQuestions() {
     xhr.setRequestHeader("Content-Type", "application/json");
     
     xhr.onreadystatechange = function () {
-
         if (xhr.readyState === 4 && xhr.status === 200) {
-
             data = JSON.parse(xhr.responseText);
             renderQuestion();
-
         }
-
         if (xhr.status === 401) {
-
             console.log("401 : Access is denied");
-
         }
-
     };
-
     xhr.send();
-
 }
 
 function renderQuestion() {
@@ -85,13 +75,10 @@ function next() {
         }
     }
 
-    
-
     if (selectedValue !== undefined) {
         currentQuestion++;
         document.getElementById("progress").style.width = currentQuestion * 20 + "%";
         if (currentQuestion <= 4) {
-            
             renderQuestion()
         }
 
@@ -103,7 +90,6 @@ function next() {
         if (currentQuestion === 5) {
             showscore();
         }
-
     }
 }
 
@@ -111,7 +97,6 @@ function showscore() {
     document.getElementById("questions").style.display = "none";
     document.getElementById("scoreText").innerText = "Your score is " + score * 20 + "%";
     document.getElementById("score").style.display = "";
-    
 }
 
 function retry() {
@@ -136,7 +121,5 @@ function requestCert() {
             alert("cert request has been send");
         }
     }
-    
     xhr.send(data);
-
 }
