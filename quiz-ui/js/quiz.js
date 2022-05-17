@@ -2,11 +2,42 @@
 var score = 0;
 var data;
 
+var apibaseUrl = "https://localhost:7294"
+
+function getConfig() {
+
+
+
+    var url = "/api/GetConfig";
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", url, true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            data = JSON.parse(xhr.responseText);
+            apiBaseUrl = data.apiuri;
+            window.alert(apibaseUrl);
+            loadQuestions();
+            
+
+        }
+
+        if (xhr.status === 401) {
+
+            console.log("401 : Access is denied");
+
+        }
+
+    };
+
+    xhr.send();
+
+    
+}
 function loadQuestions() {
 
-    document.getElementById("questions").style.display = "none";
-    document.getElementById("score").style.display = "none";
-
+    
     var url = apibaseUrl + "/question";
     var xhr = new XMLHttpRequest();
     xhr.open("GET", url, true);
