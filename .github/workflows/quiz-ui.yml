@@ -1,4 +1,4 @@
-name: Azure Static Web Apps CI/CD
+name: Quiz UI 
 
 on:
   workflow_dispatch:
