@@ -30,14 +30,14 @@ jobs:
       run: dotnet build ./quiz-api/quiz-api.csproj --no-restore
       
     - name: Publish
-      run: dotnet publish -c Release -o './quiz-api-app' 
+      run: dotnet publish ./quiz-api/quiz-api.csproj -c Release -o './quiz-api/quiz-api-app' 
       
     - name: 'Run Azure webapp deploy action using publish profile credentials'
       uses: azure/webapps-deploy@v2
       with: 
         app-name: ${{ env.AZURE_WEBAPP_NAME }} 
         publish-profile: ${{ secrets.QUIZ_API_PUBLISHING_PROFILE  }} 
-        package: './myapp'
+        package: './quiz-api/quiz-api-app'
 
       
       
