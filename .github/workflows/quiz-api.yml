@@ -1,11 +1,11 @@
 name: .NET
 
 on:
+  workflow_dispatch:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
+    paths: quiz-api/**
+  
 jobs:
   build:
 
@@ -18,8 +18,7 @@ jobs:
       with:
         dotnet-version: 5.0.x
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore ./quiz-api/quiz-api.csproj
     - name: Build
-      run: dotnet build --no-restore
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet build ./quiz-api/quiz-api.csproj --no-restore
+    
