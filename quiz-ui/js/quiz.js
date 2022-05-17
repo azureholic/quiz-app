@@ -24,6 +24,10 @@ function getConfig() {
 }
 
 function loadQuestions() {
+
+    document.getElementById("questions").style.display = "none";
+    document.getElementById("score").style.display = "none";
+
     var url = apiBaseUrl + "/question";
     var xhr = new XMLHttpRequest();
     xhr.open("GET", url, true);
