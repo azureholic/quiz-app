@@ -1,8 +1,8 @@
 ﻿var currentQuestion = 0;
 var score = 0;
 var data;
+var apiBaseUrl;
 
-var apibaseUrl = "https://localhost:7294"
 
 function getConfig() {
 
@@ -16,6 +16,7 @@ function getConfig() {
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
             data = JSON.parse(xhr.responseText);
+            console.log(data);
             apiBaseUrl = data.apiuri;
             window.alert(apibaseUrl);
             loadQuestions();
