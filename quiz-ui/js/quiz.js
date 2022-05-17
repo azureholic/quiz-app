@@ -5,9 +5,6 @@ var apiBaseUrl;
 
 
 function getConfig() {
-
-
-
     var url = "/api/GetConfig";
     var xhr = new XMLHttpRequest();
     xhr.open("GET", url, true);
@@ -15,30 +12,19 @@ function getConfig() {
 
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
-            data = JSON.parse(xhr.responseText);
-            console.log(data);
-            apiBaseUrl = data.apiuri;
-            window.alert(apibaseUrl);
+            var configdata = JSON.parse(xhr.responseText);
+            console.log(configdata.apiuri);
+            apiBaseUrl = configdata.apiuri;
             loadQuestions();
-            
-
         }
-
         if (xhr.status === 401) {
-
             console.log("401 : Access is denied");
-
         }
-
     };
-
     xhr.send();
-
-    
 }
-function loadQuestions() {
 
-    
+function loadQuestions() {
     var url = apibaseUrl + "/question";
     var xhr = new XMLHttpRequest();
     xhr.open("GET", url, true);
