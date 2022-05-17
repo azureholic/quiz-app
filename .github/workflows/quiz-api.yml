@@ -5,7 +5,11 @@ on:
   push:
     branches: [ main ]
     paths: quiz-api/**
-  
+
+env:
+  AZURE_WEBAPP_NAME: quiz-api-test    # set this to your application's name
+  DOTNET_VERSION: '6.0.x' 
+
 jobs:
   build:
 
@@ -13,12 +17,28 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    
     - name: Setup .NET
       uses: actions/setup-dotnet@v2
       with:
         dotnet-version: 6.0.x
+        
     - name: Restore dependencies
       run: dotnet restore ./quiz-api/quiz-api.csproj
+      
     - name: Build
       run: dotnet build ./quiz-api/quiz-api.csproj --no-restore
-    
+      
+    - name: Publish
+      run: dotnet publish -c Release -o './quiz-api-app' 
+      
+    - name: 'Run Azure webapp deploy action using publish profile credentials'
+      uses: azure/webapps-deploy@v2
+      with: 
+        app-name: ${{ env.AZURE_WEBAPP_NAME }} 
+        publish-profile: ${{ secrets.QUIZ_API_PUBLISHING_PROFILE  }} 
+        package: './myapp'
+
+      
+      
+  
