@@ -4,7 +4,7 @@
 ENV ASPNETCORE_URLS=http://*:8080
 
 # Copy the binaries
-COPY ./quiz-api/quiz-api-app app
+COPY ./quiz-api-app app
 # Change to app directory
 WORKDIR app
 

@@ -8,13 +8,6 @@
     <UserSecretsId>1d72abd6-1d32-4406-b573-6c003bc3cd79</UserSecretsId>
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="dockerfile" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="dockerfile" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Azure.Messaging.ServiceBus" Version="7.8.0" />
