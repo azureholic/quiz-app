@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "quiz-api", "quiz-api\quiz-a
 EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "quiz-ui", "quiz-ui\", "{7F005509-3325-4CB8-9D0F-F346098BDDE9}"
 	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_62088"
 		Debug.AspNetCompiler.PhysicalPath = "quiz-ui\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_62088\"
